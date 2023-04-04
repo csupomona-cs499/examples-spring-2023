@@ -1,8 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:five_dollar_lunch/details_page.dart';
 import 'package:five_dollar_lunch/food_list_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'firebase_options.dart';
+import 'login.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -59,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Future.delayed(const Duration(seconds: 2), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const FoodListPage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       );
     });
   }
